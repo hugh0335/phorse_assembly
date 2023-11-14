@@ -15,6 +15,14 @@ mamba install -c bioconda samtools
 #http://www.htslib.org/doc/samtools.html
 samtools fastq p-horse_varuska_long.mod.bam > p-horse_varuska_long.mod.fastq
 
+
+#install seqkit
+mamba install -c bioconda seqkit
+
+#code to run stats
+#-a indicates all stats 
+seqkit stats p-horse_varuska_long.mod.fastq -a > seqkit_stats.txt
+
 **Script for assembly from FASTA using flye
 #also submitted this to -p ag2tb due to high mem and computing wall time needed
 #!/bin/bash -l
