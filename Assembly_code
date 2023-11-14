@@ -9,6 +9,7 @@ mamba install -c bioconda flye
 #https://github.com/fenderglass/Flye/blob/flye/README.md
 
 **Script for assembly from FASTA using flye
+#also submitted this to -p ag2tb due to high mem and computing wall time needed
 #!/bin/bash -l
 ##SBATCH -t 96:00:00
 #SBATCH --ntasks=128
