@@ -8,6 +8,13 @@ mamba install -c bioconda flye
 #flye github page
 #https://github.com/fenderglass/Flye/blob/flye/README.md
 
+#install samtools
+mamba install -c bioconda samtools
+
+#code for conversion of bam file to fastq file via samtools web
+#http://www.htslib.org/doc/samtools.html
+samtools fastq p-horse_varuska_long.mod.bam > p-horse_varuska_long.mod.fastq
+
 **Script for assembly from FASTA using flye
 #also submitted this to -p ag2tb due to high mem and computing wall time needed
 #!/bin/bash -l
@@ -30,4 +37,4 @@ mamba activate Phorse
 #estimated genome size 3g
 #asm-coverage 40x is typically adequate
 #threads 128
-flye --nano-hq /home/faulkc/cfaulk/Shared/p-horse_analysis/phorse_varuska_both_uniq.fastq --out-dir phorse_flye_results --genome-size 3.0g --asm-coverage 40 --threads 128
+flye --nano-hq p-horse_varuska_long.mod.fastq --out-dir phorse_flye_results --genome-size 3.0g --asm-coverage 40 --threads 128
