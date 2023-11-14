@@ -8,24 +8,25 @@ mamba install -c bioconda flye
 #flye github page
 #https://github.com/fenderglass/Flye/blob/flye/README.md
 
-
-BATCH -t 24:00:00
-#SBATCH --nodes=1
-#SBATCH --ntasks-per-node=1
-#SBATCH --cpus-per-task=4
-#SBATCH --mem=64gb
+**Script for assembly from FASTA using flye
+#!/bin/bash -l
+##SBATCH -t 96:00:00
+#SBATCH --ntasks=128
+#SBATCH --mem=1995gb
+#SBATCH -p msibigmem
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=hugh0335@umn.edu
 #SBATCH --job-name script.slurm
 #SBATCH -o %j.flyeassembly.out
 #SBATCH -e %j.flyeassembly.err
 #SBATCH -A faulkc
-#SBATCH -p msismall,msilarge
 
 #active the mamba environment containing programs
 mamba activate Phorse
 
 #code from pallas cat supplementary 2
-#input file is phorse genome
-#
-flye --nano-hq p-horse_varuska_long.mod.bam --out-dir flye_results_phorse --genome-size 2.7g --asm-coverage 40 --threads 128
+#nano-hq and input file path is phorse genome fasta or fastq
+#estimated genome size 3g
+#asm-coverage 40x is typically adequate
+#threads 128
+flye --nano-hq /home/faulkc/cfaulk/Shared/p-horse_analysis/phorse_varuska_both_uniq.fastq --out-dir phorse_flye_results --genome-size 3.0g --asm-coverage 40 --threads 128
