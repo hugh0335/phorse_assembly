@@ -1,3 +1,14 @@
+#create mamba environment and activate
+mamba create -n Phorse
+mamba activate Phorse
+
+#install flye software
+mamba install -c bioconda flye
+
+#flye github page
+#https://github.com/fenderglass/Flye/blob/flye/README.md
+
+
 BATCH -t 24:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
